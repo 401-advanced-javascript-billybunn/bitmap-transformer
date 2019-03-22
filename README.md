@@ -18,7 +18,7 @@
 
 ## Buffers - Bitmap Transformer 
 
-### Author: Billy Bunn & Jon Gentry
+### Authors: Billy Bunn & Jon Gentry
 
 ### Links and Resources
 * [PR][1]
