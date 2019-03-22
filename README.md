@@ -1,4 +1,4 @@
-![CF](http://i.imgur.com/7v5ASc8.png) LAB
+![CF](http://i.imgur.com/7v5ASc8.png) PROJECT
 =================================================
 
 <!-- LINKS -->
@@ -16,21 +16,21 @@
 <!-- jsdoc-->
 [6]: heroku-link/docs 
 
-## Project Name
+## Buffers - Bitmap Transformer 
 
-### Author: YOUR NAME
+### Author: Billy Bunn & Jon Gentry
 
 ### Links and Resources
 * [PR][1]
 * [travis][2]
 <!-- (when applicable) -->
-* [back-end][3]
+<!-- * [back-end][3] -->
 <!-- (when applicable) -->
-* [front-end][4]
+<!-- * [front-end][4] -->
 
 #### Documentation
 <!-- API assignments only -->
-* [swagger][5]
+<!-- * [swagger][5] -->
 <!-- (All assignments) -->
 * [jsdoc][6]
 
@@ -39,6 +39,7 @@
 ##### Exported Values and Methods
 
 ###### `foo(thing) -> string`
+<!-- If you finished everything, you should be able to copy/paste the lab requirements and put them in present tense. -->
 Usage Notes or examples
 
 ###### `bar(array) -> array`
@@ -47,17 +48,17 @@ Usage Notes or examples
 ### Setup
 #### `.env` requirements
 * `npm i`
-* `PORT` - assign a port number
-* `MONGODB_URI` - URL to the running mongo instance/db
+<!-- * `PORT` - assign a port number -->
+<!-- * `MONGODB_URI` - URL to the running mongo instance/db -->
 
 
 #### Running the app
 * `npm start`
 * Endpoint: `/`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
+<!-- * Endpoint: `/foo/bar/`
+  * Returns a JSON object with abc in it. -->
+<!-- * Endpoint: `/bing/zing/`
+  * Returns a JSON object with xyz in it. -->
   
 #### Tests
 * How do you run tests?
@@ -67,4 +68,4 @@ Usage Notes or examples
 * What assertions need to be / should be made?
 
 #### UML
-Link to an image of the UML for your application and response to events
+<!-- Link to an image of the UML for your application and response to events -->
