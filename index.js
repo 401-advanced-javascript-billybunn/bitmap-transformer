@@ -13,8 +13,8 @@ node index.js ./assets/baldy.bmp shave
 ---------- MODULES ----------
 index.js - kicks off the process itself
 bitmap.js - defines Bitmap class and constructor
+error-handler.js - prints out a useful error message specific to the user's mistake
 transforms/ - each module defines a specific tranformation referenced in bitmap.js
-
 */
 
 'use strict';
@@ -23,35 +23,33 @@ const fs = require('fs');
 const util = require('util');
 
 const Bitmap = require('./lib/bitmap.js');
+const usefulErrMessage = require('./lib/error-handler.js');
+
 
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 // Function of promises to read, a file, pass through the constructor, and write a new file
 function transformWithPromises() {
+  let filePath;
   readFile(file) // read the bitmap file
     .then(buffer => {
-      console.log(`read file "${file}"`);
-
       // pass through constructor module
       let bitmap = new Bitmap(buffer, file);
-      console.log(`filePath: ${bitmap.filePath} `);
 
       // parse the bitmap buffer it returns
       bitmap.parse();
 
       // transform the buffer with whatever operation
       bitmap.transform(operation);
-      console.log(`newFilePath: ${bitmap.newFilePath} `);
-
-      // console.log(`performed operation "${operation}"`);
+      filePath = bitmap.newFilePath;
 
       // trigger another promise to write a file with the transformed buffer
       return writeFile(bitmap.newFilePath, bitmap.buffer);
     })
-    .then(() => console.log('wrote the new file'))
+    .then(() => console.log(`Created transformed bitmap at ${filePath}`))
 
-    .catch(err => console.error(`there was an error: ${err}`));
+    .catch(err => usefulErrMessage(err, file, operation));
 }
 
 const [file, operation] = process.argv.slice(2);
