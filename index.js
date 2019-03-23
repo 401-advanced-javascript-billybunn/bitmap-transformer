@@ -33,6 +33,7 @@ const writeFile = util.promisify(fs.writeFile);
 function transformWithPromises() {
   let filePath;
   readFile(file) // read the bitmap file
+  // If Promise is fulfilled, construct, parse, and transform a Bitmap object
     .then(buffer => {
       // pass through constructor module
       let bitmap = new Bitmap(buffer, file);
@@ -44,11 +45,12 @@ function transformWithPromises() {
       bitmap.transform(operation);
       filePath = bitmap.newFilePath;
 
-      // trigger another promise to write a file with the transformed buffer
+      // trigger another Promise to write a file with the transformed buffer
       return writeFile(bitmap.newFilePath, bitmap.buffer);
     })
     .then(() => console.log(`Created transformed bitmap at ${filePath}`))
 
+    // If Promise is rejected, print a useful error message
     .catch(err => usefulErrMessage(err, file, operation));
 }
 
