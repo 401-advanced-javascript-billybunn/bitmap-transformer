@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 
+// Make this into a class
 /**
  * Bitmap -- receives a file name, used in the transformer to note the new buffer
  * @param filePath
@@ -11,6 +12,7 @@ function Bitmap(filePath) {
   this.file = filePath;
 }
 
+// make this into a method on the class
 /**
  * Parser -- accepts a buffer and will parse through it, according to the specification, creating object properties for each segment of the file
  * @param buffer
@@ -21,6 +23,7 @@ Bitmap.prototype.parse = function(buffer) {
   //... and so on
 };
 
+// another class method
 /**
  * Transform a bitmap using some set of rules. The operation points to some function, which will operate on a bitmap instance
  * @param operation
@@ -62,6 +65,7 @@ const transforms = {
 
 // ------------------ GET TO WORK ------------------- //
 
+
 function transformWithCallbacks() {
 
   fs.readFile(file, (err, buffer) => {
@@ -87,9 +91,13 @@ function transformWithCallbacks() {
 }
 
 // TODO: Explain how this works (in your README)
+// node index.js <file-to-change> <operation to perform on it>
+// node index.js ./assets/baldy.bmp greyscale
 const [file, operation] = process.argv.slice(2);
 
+// Make construct a new bitmap instance (should use class in bitmap.js)
 let bitmap = new Bitmap(file);
 
+// Call function above
 transformWithCallbacks();
 
