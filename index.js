@@ -17,7 +17,6 @@ transforms/ - each module defines a specific tranformation referenced in bitmap.
 
 */
 
-
 'use strict';
 
 const fs = require('fs');
