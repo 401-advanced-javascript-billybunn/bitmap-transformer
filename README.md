@@ -36,6 +36,15 @@
 
 ### Modules
 
+#### `index.js`
+##### Exported Values and Methods
+
+###### `transformWithPromises(file, operation) -> new transformed .bmp file`
+Passes in commands from the CLI to read a `.bmp` file and write a new, transformed `.bmp` file. Uses `bitmap.js` to construct a new instance, which in turn uses modules from the `transforms/` folder to edit the bitmap files buffer and create a new file with that buffer.
+
+**Note:** The starter code for this project indicated we must provide an explaination for how CLI commands are processed in the app. See `index.js` code for a thorough explanation of how `process.argv` works in Node.js.
+
+
 #### `lib/error-handler.js`
 ##### Exported Values and Methods
 
@@ -52,7 +61,7 @@ This error-handler accounts for the following user entry scenarios:
 ##### Exported Values and Methods
 
 ###### `new Bitmap(file) -> object`
-Exports a Bitmap class and object constructor. 
+Exports a Bitmap class and object constructor to `index.js`. 
 
 Each 8-bit `.bmp` file passed through this constructor gets the following methods:
 
@@ -60,7 +69,7 @@ Each 8-bit `.bmp` file passed through this constructor gets the following method
 * `transform(operation)` - Performs an operation on the instance to transform its buffer. Valid arguments for this method include all properties within the `.transforms` property of each instance.
 
 #### `lib/transforms/`
-Each transform method creates a new file named `<old-file-name>.<operation>.bmp` in the `transforms/` folder. 
+Each transform method is exported to `bitmap.js` to create a new file named `<old-file-name>.<operation>.bmp` in the `transforms/` folder. 
 
 See the unique outputs of the files created with each module below.
 
