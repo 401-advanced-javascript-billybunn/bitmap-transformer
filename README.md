@@ -35,30 +35,59 @@
 * [jsdoc][6]
 
 ### Modules
-#### `modulename.js`
+
+#### `lib/error-handler.js`
 ##### Exported Values and Methods
 
-###### `foo(thing) -> string`
-<!-- If you finished everything, you should be able to copy/paste the lab requirements and put them in present tense. -->
-Usage Notes or examples
+###### `usefulErrMessage(err, file, operation) -> print-out on console`
+Creates and prints a useful error message to the user if an invalid CLI command is used. The message printed-out is unique to the entry error. The end of every error message includes the exact error found.
 
-###### `bar(array) -> array`
-Usage Notes or examples
+This error-handler accounts for the following user entry scenarios:
+1. No arguments were entered (`node index.js`)
+2. No transform operation was entered (`node index.js assets/baldy.bmp`)
+3. An invalid transform operation was entered (`node index.js assets/baldy.bmp blah`)
+4. An invalid filepath was entered (`node index.js blah shave`)
+
+#### `lib/bitmap.js`
+##### Exported Values and Methods
+
+###### `new Bitmap(file) -> object`
+Exports a Bitmap class and object constructor. 
+
+Each 8-bit `.bmp` file passed through this constructor gets the following methods:
+
+* `parse()` - Turns bitmap buffer data into useful object properties on the instance.
+* `transform(operation)` - Performs an operation on the instance to transform its buffer. Valid arguments for this method include all properties within the `.transforms` property of each instance.
+
+#### `lib/transforms/`
+Each transform method creates a new file named `<old-file-name>.<operation>.bmp` in the `transforms/` folder. 
+
+See the unique outputs of the files created with each module below.
+
+##### Exported Values and Methods (for each module)
+
+###### `magenta.js` - `transformMagenta(bitmap) -> buffer`
+For a given 8-bit bitmap buffer, changes the last color in the color palatte (index 255) to the RGBA value for magenta. This should be the lightest color in the color palatte. 
+
+When performed on the `baldy.bmp` starter file in this repo, this changes all the white pixels to magenta (the background and Johns eye's).
+
+###### `shave.js` - `transformShave(bitmap) -> buffer`
+For a given 8-bit bitmap buffer, changes several rows of pixels in the bitmap to the color at index 244 in the color palatte. 
+
+When performed on the `baldy.bmp` starter file in this repo, this changes all the pixels in John's beard to be his skin color. It shaves his beard, effectively transforming "John Cokos" into "Jon Gentry".
+
+###### `tyson.js` - `transformTyson(bitmap) -> buffer`
+For a given 8-bit bitmap buffer, changes several rows of pixels in the bitmap to the darkest color in the color palatte (index 0 of 255). 
+
+When performed on the `baldy.bmp` starter file in this repo, this adds a regrettable, albeit badass, tattoo on John's face.
 
 ### Setup
 #### `.env` requirements
-* `npm i`
-<!-- * `PORT` - assign a port number -->
-<!-- * `MONGODB_URI` - URL to the running mongo instance/db -->
+* `npm i` - install all dependencies lsited in `package.json`
 
 
 #### Running the app
-* `npm start`
-* Endpoint: `/`
-<!-- * Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it. -->
-<!-- * Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it. -->
+* `node index.js <file> <transformation>`
   
 #### Tests
 * How do you run tests?
