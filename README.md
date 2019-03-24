@@ -107,3 +107,4 @@ When performed on the `baldy.bmp` starter file in this repo, this adds a regrett
 
 #### UML
 <!-- Link to an image of the UML for your application and response to events -->
+![UML Diagram](https://imgur.com/STXbsew)
