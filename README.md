@@ -21,6 +21,7 @@
 ### Authors: Billy Bunn & Jon Gentry
 
 ### Links and Resources
+[![Build Status](https://www.travis-ci.com/401-advanced-javascript-billybunn/bitmap-transformer.svg?branch=working)](https://www.travis-ci.com/401-advanced-javascript-billybunn/bitmap-transformer)
 * [PR][1]
 * [travis][2]
 <!-- (when applicable) -->
